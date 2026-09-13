@@ -1,0 +1,275 @@
+/* Page 5: Our Next Chapter */
+.next-chapter-page{
+  position:relative;
+  min-height:100svh;
+  overflow-x:hidden;
+  color:#7d284e;
+  background:
+    radial-gradient(circle at 50% 14%,rgba(255,255,255,.92),transparent 28%),
+    radial-gradient(circle at 18% 36%,rgba(255,255,255,.5),transparent 25%),
+    linear-gradient(180deg,#fff1f6 0%,#ffdae8 48%,#f8bdd4 100%);
+  isolation:isolate;
+}
+.next-chapter-page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.75) 0 1.4px,transparent 1.8px) 0 0/28px 28px,
+    linear-gradient(180deg,transparent 70%,rgba(151,38,82,.08));
+}
+.next-chapter-shell{
+  position:relative;
+  z-index:2;
+  width:min(100%,760px);
+  margin:0 auto;
+  padding:max(42px,calc(env(safe-area-inset-top) + 28px)) 20px max(44px,calc(env(safe-area-inset-bottom) + 28px));
+  text-align:center;
+}
+.next-chapter-kicker{
+  display:block;
+  margin-bottom:8px;
+  color:#c12e69;
+  font:700 11px/1.2 "Cormorant Garamond",serif;
+  letter-spacing:4px;
+}
+.next-chapter-title{
+  margin:0;
+  color:#a91f58;
+  font:700 clamp(48px,12vw,72px)/.92 "Dancing Script",cursive;
+  text-shadow:0 3px 0 rgba(255,255,255,.7);
+}
+.next-chapter-intro{
+  width:min(92%,500px);
+  margin:18px auto 30px;
+  color:#714052;
+  font:600 clamp(19px,4.8vw,24px)/1.25 "Caveat",cursive;
+}
+.next-chapter-intro em{display:block;font-style:normal;margin-top:7px;color:#9b365e}
+
+/* Four real envelope cards. Keep all labels inside their own card. */
+.next-envelopes{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  width:min(100%,650px);
+  margin:0 auto 34px;
+}
+.next-envelope{
+  position:relative;
+  width:100%;
+  min-width:0;
+  height:210px;
+  min-height:210px;
+  padding:0;
+  border:0;
+  border-radius:22px;
+  background:transparent;
+  cursor:pointer;
+  perspective:900px;
+  -webkit-tap-highlight-color:transparent;
+}
+.next-envelope-card{
+  position:relative;
+  display:flex;
+  width:100%;
+  height:210px;
+  min-height:210px;
+  box-sizing:border-box;
+  align-items:center;
+  justify-content:flex-start;
+  flex-direction:column;
+  padding:21px 18px 72px;
+  overflow:hidden;
+  border:1px solid rgba(177,40,91,.16);
+  border-radius:22px;
+  background:linear-gradient(155deg,#fff9fc 0%,#ffd5e4 100%);
+  box-shadow:0 16px 28px rgba(133,43,78,.14);
+  transition:transform .34s ease,box-shadow .34s ease,background .34s ease;
+}
+.next-envelope-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:61%;
+  clip-path:polygon(0 27%,50% 73%,100% 27%,100% 100%,0 100%);
+  background:linear-gradient(160deg,rgba(241,142,177,.72),rgba(225,94,143,.62));
+  opacity:.96;
+}
+.next-envelope-card::after{
+  content:"♥";
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:38px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  transform:translateX(-50%);
+  border-radius:50%;
+  color:#fff;
+  background:linear-gradient(145deg,#ec578b,#c9185c);
+  box-shadow:0 7px 16px rgba(151,25,73,.24),0 0 0 4px rgba(255,226,237,.6);
+  font:700 17px/1 serif;
+  transition:opacity .22s ease,transform .28s ease;
+}
+.next-envelope-label{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  max-width:270px;
+  min-height:58px;
+  margin:0 auto;
+  padding:0 3px;
+  color:#9f2455;
+  text-align:center;
+  overflow-wrap:anywhere;
+  font:700 clamp(22px,3.3vw,29px)/1.02 "Dancing Script",cursive;
+}
+.next-envelope-hint{
+  position:absolute;
+  z-index:4;
+  left:12px;
+  right:12px;
+  bottom:10px;
+  color:#8e3459;
+  font:700 14px/1 "Caveat",cursive;
+  transition:opacity .2s ease;
+}
+.next-envelope-message{
+  position:absolute;
+  z-index:5;
+  inset:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  padding:12px 14px;
+  overflow:hidden;
+  border-radius:16px;
+  color:#73344e;
+  background:rgba(255,253,254,.98);
+  box-shadow:0 10px 24px rgba(117,38,68,.13);
+  text-align:center;
+  overflow-wrap:anywhere;
+  font:700 15px/1.08 "Caveat",cursive;
+  opacity:0;
+  transform:translateY(18px) scale(.96);
+  pointer-events:none;
+  transition:.3s cubic-bezier(.2,.8,.2,1);
+}
+.next-envelope.open .next-envelope-card{
+  transform:translateY(-3px) rotate(-.3deg);
+  background:linear-gradient(155deg,#fffafd,#ffcbdc);
+  box-shadow:0 22px 34px rgba(133,43,78,.2);
+}
+.next-envelope.open .next-envelope-card::after{opacity:0;transform:translateX(-50%) scale(.7)}
+.next-envelope.open .next-envelope-hint{opacity:0}
+.next-envelope.open .next-envelope-label{opacity:0}
+.next-envelope.open .next-envelope-message{opacity:1;transform:none;pointer-events:auto}
+.next-envelope:focus-visible{outline:3px solid rgba(201,24,92,.28);outline-offset:5px}
+
+.next-plans{
+  width:min(100%,650px);
+  margin:0 auto;
+  padding:24px 18px 20px;
+  border:1px solid rgba(171,44,92,.14);
+  border-radius:28px;
+  background:rgba(255,250,252,.78);
+  box-shadow:0 18px 36px rgba(133,43,78,.13);
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+}
+.next-plans h2{
+  margin:0 0 6px;
+  color:#a91f58;
+  font:700 clamp(31px,7.5vw,42px)/1 "Dancing Script",cursive;
+}
+.next-plans>p{
+  margin:0 0 16px;
+  color:#81435c;
+  font:600 18px/1.08 "Caveat",cursive;
+}
+.next-plan-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.next-plan{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:52px;
+  padding:11px 12px;
+  text-align:left;
+  border:1px solid rgba(181,49,101,.14);
+  border-radius:16px;
+  color:#7b3451;
+  background:#fff9fb;
+  box-shadow:0 5px 12px rgba(126,44,75,.06);
+  font:700 17px/1.05 "Caveat",cursive;
+  cursor:pointer;
+  transition:.22s ease;
+}
+.next-plan-box{
+  flex:0 0 24px;
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border:2px solid #d45585;
+  border-radius:7px;
+  color:#fff;
+  font:700 15px/1 sans-serif;
+  transition:.22s ease;
+}
+.next-plan.done{
+  color:#9a4767;
+  background:#ffeaf2;
+  transform:translateY(-1px);
+}
+.next-plan.done .next-plan-box{background:#d82e70;border-color:#d82e70}
+.next-plan.done .next-plan-box::after{content:"✓"}
+.next-chapter-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  width:min(100%,650px);
+  margin:26px auto 0;
+}
+.next-chapter-actions .cta{min-height:52px}
+.next-chapter-actions .next-chapter-back{background:rgba(255,250,252,.82);color:#9e2454;border-color:rgba(181,49,101,.22)}
+.next-chapter-actions .next-chapter-next{flex:1;max-width:380px;background:linear-gradient(135deg,#ef72a0,#c91659);color:#fff}
+
+@media(max-width:560px){
+  .next-chapter-shell{padding-left:16px;padding-right:16px}
+  .next-envelopes{grid-template-columns:1fr;gap:12px}
+  .next-envelope,.next-envelope-card{height:178px;min-height:178px}
+  .next-envelope-card{padding:18px 16px 64px}
+  .next-envelope-label{max-width:320px;min-height:50px;font-size:25px}
+  .next-envelope-card::after{bottom:31px;width:38px;height:38px}
+  .next-envelope-message{inset:10px;padding:13px 16px;font-size:17px;line-height:1.08}
+  .next-plan-list{grid-template-columns:1fr}
+  .next-chapter-actions{display:grid;grid-template-columns:.72fr 1.28fr}
+  .next-chapter-actions .next-chapter-next{max-width:none}
+}
+
+@media(max-width:390px){
+  .next-chapter-title{font-size:48px}
+  .next-chapter-intro{margin-bottom:22px}
+  .next-envelope-label{font-size:23px}
+  .next-envelope-message{font-size:16px}
+  .next-chapter-actions{grid-template-columns:1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .next-envelope-card,.next-envelope-message,.next-envelope-card::after,.next-plan{transition:none!important}
+}

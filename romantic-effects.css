@@ -1,0 +1,274 @@
+.letter-reveal{
+  position:relative;
+  z-index:3;
+  width:100%;
+  margin:14px auto 8px;
+}
+
+/* Clean romantic envelope: closed state first */
+.love-envelope{
+  position:relative;
+  display:block;
+  width:min(88vw,360px);
+  height:266px;
+  margin:8px auto 2px;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  perspective:1100px;
+  transition:height .55s ease,transform .55s ease,opacity .4s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.love-envelope:focus-visible{
+  outline:3px solid rgba(210,30,96,.28);
+  outline-offset:6px;
+  border-radius:22px;
+}
+.envelope-back{
+  position:absolute;
+  z-index:1;
+  left:12px;
+  right:12px;
+  top:62px;
+  height:148px;
+  border-radius:16px;
+  background:linear-gradient(155deg,#f9b6cc 0%,#f18aaf 100%);
+  box-shadow:0 18px 34px rgba(143,42,80,.20),inset 0 1px rgba(255,255,255,.62);
+}
+.envelope-paper{
+  position:absolute;
+  z-index:3;
+  left:34px;
+  right:34px;
+  top:78px;
+  height:118px;
+  display:grid;
+  place-items:center;
+  padding:16px 18px;
+  overflow:hidden;
+  border-radius:10px 10px 6px 6px;
+  color:#9f2455;
+  background:linear-gradient(180deg,#fffefd 0%,#fff8fb 100%);
+  box-shadow:0 8px 18px rgba(119,40,70,.08);
+  font:700 24px/1.05 "Dancing Script",cursive;
+  opacity:0;
+  transform:translateY(24px) scale(.98);
+  transition:transform .72s cubic-bezier(.2,.8,.2,1),opacity .22s ease .12s;
+}
+.envelope-front{
+  position:absolute;
+  z-index:5;
+  left:12px;
+  right:12px;
+  top:62px;
+  height:148px;
+  border-radius:0 0 16px 16px;
+  overflow:hidden;
+  background:
+    linear-gradient(32deg,transparent 49%,rgba(255,255,255,.16) 50% 51%,transparent 52%),
+    linear-gradient(148deg,transparent 49%,rgba(255,255,255,.12) 50% 51%,transparent 52%),
+    linear-gradient(180deg,#f7a8c2 0%,#ee84a9 100%);
+  clip-path:polygon(0 0,50% 47%,100% 0,100% 100%,0 100%);
+  box-shadow:inset 0 -1px rgba(139,32,73,.08);
+}
+.envelope-front::after{
+  content:"To: Jenny Saur ♡";
+  position:absolute;
+  left:50%;
+  bottom:11px;
+  transform:translateX(-50%);
+  width:86%;
+  text-align:center;
+  color:#9d2a57;
+  font:700 18px/1 "Dancing Script",cursive;
+  letter-spacing:.15px;
+  text-shadow:0 1px rgba(255,255,255,.58);
+  transition:opacity .25s ease;
+}
+.envelope-flap{
+  position:absolute;
+  z-index:6;
+  left:12px;
+  right:12px;
+  top:62px;
+  height:118px;
+  border-radius:16px 16px 0 0;
+  background:linear-gradient(180deg,#ffd9e5 0%,#f6a4bf 100%);
+  clip-path:polygon(0 0,100% 0,50% 88%);
+  transform-origin:50% 0;
+  transform:rotateX(0deg);
+  transition:transform .72s cubic-bezier(.2,.75,.2,1),z-index 0s linear .36s;
+  backface-visibility:hidden;
+  box-shadow:inset 0 1px rgba(255,255,255,.68);
+}
+.envelope-seal{
+  position:absolute;
+  z-index:8;
+  left:50%;
+  top:140px;
+  width:48px;
+  height:48px;
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:#fff;
+  background:linear-gradient(145deg,#eb4b84,#c9185c);
+  box-shadow:0 8px 18px rgba(151,25,73,.28),inset 0 1px rgba(255,255,255,.35);
+  font:700 20px/1 serif;
+  transition:opacity .25s ease,transform .35s ease;
+}
+.envelope-label{
+  position:absolute;
+  z-index:9;
+  left:0;
+  right:0;
+  bottom:4px;
+  text-align:center;
+  color:#9c2a57;
+  font:700 20px/1 "Caveat",cursive;
+  letter-spacing:.2px;
+}
+.love-envelope:hover .envelope-seal{
+  transform:translate(-50%,-50%) scale(1.06);
+}
+
+/* Open state: flap folds away and the letter rises out cleanly */
+.letter-reveal.open .envelope-flap{
+  z-index:2;
+  transform:rotateX(178deg);
+}
+.letter-reveal.open .envelope-paper{
+  z-index:4;
+  opacity:1;
+  transform:translateY(-74px) scale(1);
+}
+.letter-reveal.open .envelope-front::after{
+  opacity:.12;
+}
+.letter-reveal.open .envelope-seal{
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.65);
+}
+.letter-reveal.open .envelope-label{
+  opacity:0;
+}
+.letter-reveal.open .love-envelope{
+  height:250px;
+  transform:scale(.97);
+  pointer-events:none;
+}
+
+.letter-paper-reveal{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(24px);
+  margin-top:0!important;
+  transition:max-height 1s ease,opacity .6s ease .2s,transform .6s ease .2s;
+}
+.letter-reveal.open .letter-paper-reveal{
+  max-height:1700px;
+  overflow:visible;
+  opacity:1;
+  transform:none;
+  margin-top:10px!important;
+}
+.typed-letter{
+  min-height:245px;
+  white-space:pre-wrap;
+  color:#4e2638;
+  font:600 clamp(18px,4.7vw,23px)/1.42 "Caveat",cursive;
+}
+.typed-letter.typing:after{
+  content:"|";
+  margin-left:2px;
+  color:#d11c61;
+  animation:typeCursor .72s steps(1) infinite;
+}
+@keyframes typeCursor{50%{opacity:0}}
+
+.secret-love-trigger{
+  display:grid;
+  place-items:center;
+  width:50px;
+  height:50px;
+  margin:18px auto 2px;
+  border:1px solid rgba(201,30,91,.18);
+  border-radius:50%;
+  color:#c8175a;
+  background:#fff1f6;
+  box-shadow:0 9px 20px rgba(152,51,90,.14);
+  font:700 28px/1 serif;
+  cursor:pointer;
+  animation:secretHeart 1.7s ease-in-out infinite;
+}
+.secret-love-trigger[hidden]{display:none!important}
+@keyframes secretHeart{50%{transform:scale(1.1)}}
+
+.love-popup[hidden]{display:none!important}
+.love-popup{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:rgba(76,22,46,.28);
+  backdrop-filter:blur(8px);
+  opacity:0;
+  transition:opacity .22s ease;
+}
+.love-popup.open{opacity:1}
+.love-popup-card{
+  position:relative;
+  width:min(88vw,360px);
+  padding:34px 26px 30px;
+  text-align:center;
+  border-radius:28px;
+  color:#9e2454;
+  background:linear-gradient(180deg,#fffafd,#ffe2ed);
+  box-shadow:0 28px 70px rgba(92,29,55,.28);
+  transform:translateY(10px) scale(.96);
+  transition:.28s ease;
+}
+.love-popup.open .love-popup-card{transform:none}
+.love-popup-heart{
+  display:block;
+  margin-bottom:8px;
+  color:#df2f71;
+  font:700 60px/1 "Dancing Script",cursive;
+}
+.love-popup-card p{
+  margin:0;
+  font:700 36px/.98 "Dancing Script",cursive;
+}
+.love-popup-card span:last-child{
+  display:block;
+  margin-top:14px;
+  color:#744052;
+  font:600 20px/1.1 "Caveat",cursive;
+}
+.love-popup-close{
+  position:absolute;
+  right:12px;
+  top:10px;
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:50%;
+  color:#a8305c;
+  background:rgba(255,255,255,.66);
+  font:600 26px/1 sans-serif;
+  cursor:pointer;
+}
+
+@media(max-width:430px){
+  .love-envelope{width:min(92vw,350px);height:258px}
+  .envelope-back,.envelope-front,.envelope-flap{left:10px;right:10px}
+  .envelope-paper{left:30px;right:30px;font-size:22px}
+  .envelope-front::after{font-size:17px;bottom:10px}
+  .envelope-label{font-size:19px}
+  .envelope-seal{top:138px;width:46px;height:46px}
+}

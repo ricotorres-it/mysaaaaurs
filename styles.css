@@ -1,0 +1,170 @@
+:root{
+  --pink:#d30a59;
+  --pink2:#f04d8b;
+  --pink3:#ff85ad;
+  --paper:#fffaf7;
+  --blush:#ffe4eb;
+  --ink:#4d2940;
+  --shadow:0 14px 28px rgba(144,35,76,.18);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#233f3c;color:var(--ink);font-family:"Cormorant Garamond",serif}
+body{overflow-x:hidden}
+button{font:inherit}
+button:focus-visible{outline:3px solid rgba(211,10,89,.28);outline-offset:3px}
+
+.site{
+  width:min(100%,520px);
+  margin:0 auto;
+  min-height:100vh;
+  background:#ffdce7;
+  box-shadow:0 0 60px rgba(0,0,0,.28);
+  position:relative;
+}
+
+.page{
+  display:none;
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+}
+.page.active{display:block;animation:pageIn .45s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.petals{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.petal{
+  position:absolute;
+  top:-10vh;
+  width:14px;
+  height:9px;
+  background:linear-gradient(135deg,#ffd1df,#f05e93 70%);
+  border-radius:80% 20% 80% 20%;
+  filter:drop-shadow(0 2px 2px rgba(184,35,86,.15));
+  animation:fall linear infinite,sway ease-in-out infinite alternate;
+}
+@keyframes fall{to{transform:translate3d(var(--drift),115vh,0) rotate(720deg)}}
+@keyframes sway{from{margin-left:-12px}to{margin-left:12px}}
+
+.scrapbook-page{
+  background:
+    radial-gradient(circle at 8% 8%,rgba(255,255,255,.8) 0 1px,transparent 1.7px) 0 0/12px 12px,
+    linear-gradient(180deg,#ffe5ed 0%,#ffd4e2 48%,#ffcddd 100%);
+  padding:42px 18px 48px;
+  min-height:100svh;
+}
+.sakura-border::before,.sakura-border::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  background:url('assets/exact/sakura.svg') center/contain no-repeat;
+  width:245px;
+  height:145px;
+  top:-10px;
+}
+.sakura-border::before{left:-76px}
+.sakura-border::after{right:-76px;transform:scaleX(-1)}
+.scrapbook-page::before,.scrapbook-page::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  background:url('assets/exact/sakura.svg') center/contain no-repeat;
+  width:250px;
+  height:145px;
+  bottom:-25px;
+}
+.scrapbook-page::before{left:-85px;transform:rotate(180deg)}
+.scrapbook-page::after{right:-85px;transform:scaleX(-1) rotate(180deg)}
+.page-heading,.letter-paper,.page-nav,.end-note{position:relative;z-index:2}
+
+.landing-page{background:#91b8d6;color:white;min-height:100svh}
+.landing-vignette{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,30,50,.05),rgba(255,223,235,.02) 44%,rgba(24,23,38,.14))}
+.branch{position:absolute;width:240px;z-index:3;pointer-events:none;filter:drop-shadow(0 2px 6px rgba(114,26,61,.18))}
+.branch-tl{left:-62px;top:-20px}
+.branch-tr{right:-62px;top:-20px;transform:scaleX(-1)}
+.branch-bl{left:-72px;bottom:-35px;transform:rotate(180deg)}
+.branch-br{right:-72px;bottom:-35px;transform:scaleX(-1) rotate(180deg)}
+.landing-copy{position:absolute;z-index:5;top:20.5%;left:18px;right:18px;text-align:center;text-shadow:0 3px 12px rgba(79,20,42,.25)}
+.landing-copy h1{margin:0;color:#c9004f;font-family:"Dancing Script",cursive;font-size:clamp(58px,17vw,94px);line-height:.78;font-weight:700;letter-spacing:-2px}
+.landing-copy h1 span{font-size:.88em}
+.landing-copy h2{margin:18px 0 8px;color:#c9004f;font-family:"Dancing Script",cursive;font-size:clamp(31px,9vw,47px);font-weight:700}
+.landing-copy p{margin:8px 0 20px;color:#45243a;font-size:clamp(18px,5vw,26px);font-weight:700;line-height:1.1;text-shadow:0 2px 3px rgba(255,255,255,.6)}
+.heart-divider{display:flex;align-items:center;gap:12px;justify-content:center;color:#c9004f;font-size:18px}
+.heart-divider span{width:22%;height:2px;background:currentColor;border-radius:99px;opacity:.8}
+.heart-divider.pink{margin-top:10px}
+.landing-side{position:absolute;z-index:5;top:8.5%;font-family:"Dancing Script",cursive;color:#c9004f;font-size:24px;font-weight:700;line-height:1.05;text-shadow:0 2px 2px rgba(255,255,255,.65)}
+.landing-left{left:34px;transform:rotate(-7deg)}
+.landing-right{right:34px;text-align:center;transform:rotate(5deg)}
+.landing-footer{position:absolute;z-index:5;bottom:20px;margin:0;color:white;font-family:"Dancing Script",cursive;text-shadow:0 2px 8px rgba(0,0,0,.55)}
+.footer-left{left:24px;font-size:21px;line-height:1}
+.footer-right{right:20px;text-align:right;font-family:"Cormorant Garamond",serif;font-weight:700;font-size:12px;letter-spacing:2px;line-height:1.2}
+
+.cta{
+  border:0;
+  border-radius:999px;
+  padding:14px 24px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(171,31,85,.22);
+  transition:.15s transform,.15s filter;
+  min-height:52px;
+  -webkit-tap-highlight-color:transparent;
+}
+.cta:active{transform:scale(.97)}
+.cta.primary{color:white;background:linear-gradient(135deg,#f26392,#c70d58);border:2px solid rgba(255,255,255,.9);box-shadow:0 0 0 2px rgba(211,10,89,.25),0 12px 24px rgba(145,12,67,.24);font-family:"Dancing Script",cursive;font-size:25px;font-weight:700}
+.landing-copy .cta{padding:16px 34px;font-size:29px;min-width:230px}
+.landing-copy .cta span{margin-right:10px}
+.landing-copy .cta b{margin-left:10px;font-family:serif;font-weight:400}
+.cta.back{background:rgba(255,255,255,.8);border:1.5px solid rgba(211,10,89,.36);color:#a31550;font-family:"Dancing Script",cursive;font-size:23px;font-weight:700}
+.page-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:420px;margin:30px auto 8px}
+.page-nav .cta{width:100%;font-size:22px;padding:12px 8px}
+
+.page-heading{text-align:center;color:var(--pink);margin:20px auto 18px}
+.page-heading p{font-size:12px;letter-spacing:4px;font-weight:700;margin:8px 0;color:#c62362}
+.page-heading h1,.page-heading h2{font-family:"Dancing Script",cursive;margin:0;font-weight:700;text-shadow:0 2px 0 rgba(255,255,255,.85)}
+.anniversary-heading{padding-top:18px}
+.anniversary-heading .tiny-heart{display:block;font-family:"Dancing Script",cursive;font-size:54px;line-height:.65;transform:rotate(-12deg)}
+.anniversary-heading h1{font-size:clamp(58px,15vw,82px);line-height:.83}
+.anniversary-heading h2{font-size:36px;margin-top:12px}
+.stats{font-size:12px;letter-spacing:3px;font-weight:700;margin:16px 0;color:#bf235d;line-height:1.7}
+.stats b{letter-spacing:4px}
+.scribble-heart{font-family:"Dancing Script",cursive;font-size:48px;line-height:.7}
+
+.letter-paper{
+  background:repeating-linear-gradient(0deg,rgba(132,79,84,.035) 0 1px,transparent 1px 6px),linear-gradient(#fffaf6,#fff5f0);
+  border-radius:4px;
+  box-shadow:var(--shadow);
+  padding:28px 24px 26px;
+  margin:16px auto 0;
+  max-width:430px;
+  transform:rotate(-.35deg);
+  border:1px solid rgba(195,119,136,.22);
+}
+.letter-paper::before,.letter-paper::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle at 5px 0,transparent 5px,#fffaf6 5.5px) 0 0/10px 10px}
+.letter-paper::before{top:-7px;transform:rotate(180deg)}
+.letter-paper::after{bottom:-7px}
+.letter-paper p{font-family:"Caveat",cursive;font-size:22px;line-height:1.17;margin:0 0 18px;color:#463447}
+.letter-paper .signoff{font-family:"Dancing Script",cursive;color:#d20a59;font-size:27px;font-weight:700;margin-top:20px}
+.letter-heart{position:absolute;right:18px;bottom:14px;color:#e21a66;font:700 54px/1 "Dancing Script",cursive}
+.tape,.tape-top{position:absolute;width:72px;height:20px;background:rgba(225,201,166,.58);top:-10px;left:50%;transform:translateX(-50%) rotate(-1deg);box-shadow:inset 0 0 7px rgba(144,105,74,.15)}
+.end-note{text-align:center;color:#c92864;font-size:18px;margin:14px 0 0}
+.end-note span{font-size:11px;letter-spacing:3px;font-weight:700}
+
+@media(max-width:380px){
+  .scrapbook-page{padding-left:14px;padding-right:14px}
+  .letter-paper p{font-size:20px}
+  .page-nav{gap:8px}
+}
+
+@media(min-width:700px){
+  body{padding:12px 0}
+  .site{border-radius:18px;overflow:hidden}
+  .scrapbook-page{padding-left:26px;padding-right:26px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .page.active{animation:none!important}
+  .petals{display:none}
+  .cta{transition:none!important}
+}

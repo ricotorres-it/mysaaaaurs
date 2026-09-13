@@ -1,0 +1,286 @@
+/* Anniversary page finishing styles + interactive photo stack page. */
+.anniversary-page{padding-bottom:calc(54px + env(safe-area-inset-bottom));}
+.anniversary-bottom-photo{
+  position:relative;
+  z-index:2;
+  margin:34px auto 24px;
+  width:min(100%,430px);
+  padding:10px 10px 14px;
+  background:#fff;
+  box-shadow:0 16px 30px rgba(112,38,69,.22);
+  transform:rotate(-.6deg);
+  border:1px solid rgba(185,79,117,.14);
+}
+.anniversary-bottom-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  object-fit:contain;
+  object-position:center;
+  filter:none!important;
+  transform:none!important;
+  image-rendering:auto;
+  backface-visibility:hidden;
+}
+.photo-tape{
+  position:absolute;
+  z-index:3;
+  top:-12px;
+  left:50%;
+  width:100px;
+  height:24px;
+  transform:translateX(-50%) rotate(-2deg);
+  background:rgba(226,199,164,.6);
+  box-shadow:inset 0 0 7px rgba(144,105,74,.13);
+}
+
+/* Page 1: romantic sakura-only landing, no photo. */
+.site{min-height:0!important;}
+.landing-page{
+  min-height:100vh!important;
+  height:100vh!important;
+  min-height:100dvh!important;
+  height:100dvh!important;
+  background:
+    radial-gradient(circle at 18% 17%,rgba(255,255,255,.9) 0 2px,transparent 2.6px) 0 0/24px 24px,
+    radial-gradient(circle at 78% 25%,rgba(255,255,255,.45),transparent 28%),
+    linear-gradient(180deg,#fff0f5 0%,#ffdce8 42%,#ffc6da 72%,#efa0bf 100%)!important;
+}
+.landing-vignette{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 38%,rgba(255,255,255,.34),transparent 38%),
+    linear-gradient(180deg,rgba(255,255,255,.06),transparent 55%,rgba(125,26,67,.12))!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.landing-footer{color:#9e1b50!important;text-shadow:0 2px 3px rgba(255,255,255,.72)!important;}
+
+/* Page 3: Interactive Photo Stack */
+.stack-page{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  color:#fff;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(216,61,119,.22),transparent 34%),
+    radial-gradient(circle at 18% 18%,rgba(255,193,216,.08),transparent 25%),
+    linear-gradient(180deg,#120b13 0%,#09070b 58%,#170b12 100%);
+  isolation:isolate;
+}
+.stack-page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 18% 14%,rgba(255,255,255,.10) 0 1px,transparent 1.7px) 0 0/24px 24px,
+    linear-gradient(180deg,rgba(255,255,255,.02),transparent 30%,rgba(0,0,0,.22));
+}
+.stack-page::after{
+  content:"♡";
+  position:absolute;
+  right:-16px;
+  top:18%;
+  z-index:0;
+  color:rgba(238,97,151,.08);
+  font:700 190px/1 "Dancing Script",cursive;
+  transform:rotate(-12deg);
+  pointer-events:none;
+}
+.stack-copy{
+  position:absolute;
+  z-index:6;
+  top:max(24px,env(safe-area-inset-top));
+  left:20px;
+  right:20px;
+  text-align:center;
+  pointer-events:none;
+}
+.stack-copy p{
+  margin:0 0 8px;
+  color:#ffbfd7;
+  font:700 10px/1.2 "Cormorant Garamond",serif;
+  letter-spacing:3.5px;
+}
+.stack-copy h1{
+  margin:0;
+  color:#fff7fa;
+  font:700 clamp(48px,14vw,70px)/.9 "Dancing Script",cursive;
+  text-shadow:0 5px 22px rgba(0,0,0,.5);
+}
+.stack-copy span{
+  display:block;
+  margin-top:10px;
+  color:rgba(255,255,255,.72);
+  font:600 16px/1.15 "Caveat",cursive;
+}
+.stack-root{
+  position:absolute;
+  inset:0;
+  z-index:2;
+}
+.memory-stack-shell{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:142px 20px 150px;
+}
+.memory-stack-stage{
+  position:relative;
+  width:min(82vw,390px);
+  height:min(61vh,560px);
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.memory-polaroid{
+  position:absolute;
+  width:min(78vw,360px);
+  max-height:min(58vh,540px);
+  margin:0;
+  padding:11px 11px 18px;
+  border-radius:4px;
+  background:linear-gradient(180deg,#fff,#fffafa);
+  box-shadow:0 26px 50px rgba(0,0,0,.46),0 2px 0 rgba(255,255,255,.95) inset;
+  border:1px solid rgba(255,255,255,.72);
+  transform-origin:center 84%;
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:pan-y;
+  will-change:transform;
+}
+.memory-polaroid.behind{pointer-events:none;filter:saturate(.92) brightness(.86);}
+.memory-polaroid.front{cursor:grab;}
+.memory-polaroid.front:active{cursor:grabbing;}
+.memory-polaroid img{
+  display:block;
+  width:100%;
+  height:min(42vh,390px);
+  min-height:280px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:2px;
+  pointer-events:none;
+  background:#eadde2;
+}
+.memory-polaroid-copy{
+  padding:11px 6px 0;
+  text-align:center;
+  color:#8e174a;
+}
+.memory-polaroid-copy h2{
+  margin:0;
+  font:700 clamp(28px,7.5vw,38px)/.95 "Dancing Script",cursive;
+}
+.memory-polaroid-copy p{
+  margin:8px auto 0;
+  max-width:95%;
+  color:#5f3347;
+  font:600 clamp(17px,4.8vw,23px)/1.05 "Caveat",cursive;
+}
+.memory-swipe-hint{
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:122px;
+  margin:0;
+  text-align:center;
+  color:rgba(255,232,240,.80);
+  font:600 18px/1.1 "Caveat",cursive;
+  text-shadow:0 2px 8px rgba(0,0,0,.65);
+}
+.memory-stack-controls{
+  position:absolute;
+  left:20px;
+  right:20px;
+  bottom:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.memory-stack-controls button{
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1.5px solid rgba(255,176,207,.58);
+  display:grid;
+  place-items:center;
+  color:#ffd2e2;
+  background:rgba(28,16,24,.70);
+  box-shadow:0 8px 20px rgba(0,0,0,.28);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  cursor:pointer;
+}
+.memory-stack-controls button:active{transform:scale(.95);}
+.memory-stack-controls button.liked{
+  color:#fff;
+  background:linear-gradient(135deg,#f56e9f,#bd0f55);
+  border-color:#ffc1d8;
+}
+.memory-stack-controls span{
+  min-width:48px;
+  text-align:center;
+  color:#fff1f6;
+  font:700 14px/1 "Cormorant Garamond",serif;
+  letter-spacing:1px;
+}
+.stack-page-nav{
+  position:absolute;
+  z-index:8;
+  left:16px;
+  right:16px;
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:10px;
+}
+.stack-page-nav .cta{
+  width:100%;
+  min-width:0;
+  min-height:46px;
+  padding:10px 8px;
+  font-size:20px;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.stack-page-nav .cta.back{
+  color:#fff;
+  background:rgba(24,13,20,.70);
+  border-color:rgba(255,192,215,.55);
+}
+.stack-page-nav .cta.primary{
+  background:linear-gradient(135deg,rgba(242,99,146,.96),rgba(199,13,88,.96));
+}
+
+@media(max-width:430px){
+  .anniversary-bottom-photo{margin-left:auto;margin-right:auto;padding:8px 8px 12px;}
+  .stack-copy{top:max(18px,env(safe-area-inset-top));}
+  .memory-stack-shell{padding-top:128px;padding-bottom:150px;}
+  .memory-stack-stage{height:57vh;min-height:410px;}
+  .memory-polaroid{width:80vw;}
+  .memory-polaroid img{height:38vh;min-height:260px;}
+}
+
+@media(max-height:720px){
+  .stack-copy h1{font-size:46px;}
+  .stack-copy span{font-size:14px;}
+  .memory-stack-shell{padding-top:112px;padding-bottom:135px;}
+  .memory-stack-stage{height:54vh;min-height:350px;}
+  .memory-polaroid img{height:33vh;min-height:220px;}
+  .memory-swipe-hint{bottom:112px;}
+  .memory-stack-controls{bottom:56px;}
+}

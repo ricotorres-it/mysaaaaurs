@@ -1,0 +1,34 @@
+/* Navigation-flow safety for Page 4 final memory. */
+.memory-stack-shell.has-final-continue .memory-swipe-hint{
+  display:none!important;
+}
+
+.memory-final-continue.flow-final-continue{
+  position:absolute!important;
+  z-index:40!important;
+  left:50%!important;
+  bottom:116px!important;
+  width:min(82vw,360px)!important;
+  min-height:48px!important;
+  margin:0!important;
+  padding:11px 16px!important;
+  transform:translateX(-50%)!important;
+  border:1px solid rgba(193,43,98,.22)!important;
+  border-radius:999px!important;
+  color:#fff!important;
+  background:linear-gradient(135deg,#ef72a0,#c91659)!important;
+  box-shadow:0 12px 24px rgba(151,43,84,.22)!important;
+  font:700 19px/1 "Caveat",cursive!important;
+  cursor:pointer!important;
+  pointer-events:auto!important;
+}
+
+.memory-stack-shell.has-final-continue .memory-stack-controls{
+  bottom:62px!important;
+}
+
+@media(max-height:720px){
+  .memory-final-continue.flow-final-continue{
+    bottom:108px!important;
+  }
+}

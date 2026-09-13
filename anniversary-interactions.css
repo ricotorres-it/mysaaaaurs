@@ -1,0 +1,76 @@
+.anniversary-voice-note{
+  position:relative;
+  z-index:3;
+  width:min(92%,430px);
+  margin:24px auto 20px;
+  padding:18px 16px 16px;
+  text-align:center;
+  border:1px solid rgba(197,48,103,.15);
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(255,251,253,.96),rgba(255,230,239,.94));
+  box-shadow:0 15px 30px rgba(145,45,82,.13);
+}
+.anniversary-voice-note .voice-note-heart{
+  display:block;
+  color:#dc2c6d;
+  font:700 48px/.75 "Dancing Script",cursive;
+  margin-bottom:7px;
+}
+.anniversary-voice-note small{
+  display:block;
+  color:#b03a67;
+  font:700 10px/1.2 "Cormorant Garamond",serif;
+  letter-spacing:2.5px;
+}
+.anniversary-voice-note strong{
+  display:block;
+  margin-top:5px;
+  color:#9f2455;
+  font:700 27px/1 "Dancing Script",cursive;
+}
+.anniversary-voice-note audio{display:none}
+#anniversary-voice-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:48px;
+  margin-top:14px;
+  padding:11px 18px;
+  border:1px solid rgba(190,51,103,.2);
+  border-radius:999px;
+  color:#fff;
+  background:linear-gradient(135deg,#ef72a0,#c91659);
+  box-shadow:0 10px 20px rgba(160,42,85,.18);
+  font:700 18px/1 "Caveat",cursive;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+#anniversary-voice-button:active{transform:scale(.97)}
+#anniversary-voice-button:disabled{opacity:.58;cursor:default}
+#anniversary-voice-icon{min-width:18px;font-family:system-ui,sans-serif;font-size:14px}
+
+.memory-stack-controls button:disabled{
+  opacity:.35;
+  cursor:default;
+  pointer-events:none;
+}
+.memory-final-continue{
+  position:relative;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:min(88vw,330px);
+  min-height:50px;
+  margin:14px auto 4px;
+  padding:12px 18px;
+  border:1px solid rgba(190,51,103,.18);
+  border-radius:999px;
+  color:#fff;
+  background:linear-gradient(135deg,#ef72a0,#c91659);
+  box-shadow:0 12px 24px rgba(160,42,85,.2);
+  font:700 19px/1 "Caveat",cursive;
+  cursor:pointer;
+}
+.memory-final-continue:active{transform:scale(.97)}

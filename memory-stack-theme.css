@@ -1,0 +1,30 @@
+/* Baby-pink theme for Page 4 interactive photo stack. */
+.stack-page{
+  color:#7f234b!important;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(255,255,255,.72),transparent 34%),
+    radial-gradient(circle at 18% 18%,rgba(255,255,255,.5),transparent 24%),
+    linear-gradient(180deg,#fff1f6 0%,#ffe1ec 48%,#ffd1e1 100%)!important;
+}
+.stack-page::before{
+  background:
+    radial-gradient(circle at 18% 14%,rgba(190,66,113,.12) 0 1px,transparent 1.7px) 0 0/24px 24px,
+    linear-gradient(180deg,rgba(255,255,255,.18),transparent 34%,rgba(213,94,139,.08))!important;
+}
+.stack-page::after{color:rgba(205,48,108,.11)!important}
+.stack-copy p{color:#b72b65!important}
+.stack-copy h1{color:#a91f58!important;text-shadow:0 3px 10px rgba(255,255,255,.85)!important}
+.stack-copy span{color:#7b3a56!important}
+.memory-polaroid{box-shadow:0 22px 42px rgba(145,55,91,.22),0 2px 0 rgba(255,255,255,.96) inset!important}
+.memory-polaroid.behind{filter:saturate(.95) brightness(.96)!important}
+.memory-swipe-hint{color:#8f2d57!important;text-shadow:none!important}
+.memory-stack-controls button{
+  color:#a91f58!important;
+  background:rgba(255,248,251,.88)!important;
+  border-color:rgba(205,48,108,.35)!important;
+  box-shadow:0 7px 16px rgba(156,60,98,.14)!important;
+}
+.memory-stack-controls button.liked{color:#fff!important;background:linear-gradient(135deg,#f577a6,#c4165c)!important;border-color:#ffc2d7!important}
+.memory-stack-controls span{color:#8d2954!important}
+.stack-page-nav .cta.back{color:#9f2455!important;background:rgba(255,248,251,.9)!important;border-color:rgba(205,48,108,.32)!important}
+.stack-page-nav .cta.primary{color:#fff!important;background:linear-gradient(135deg,#f47ba7,#cf175e)!important}
